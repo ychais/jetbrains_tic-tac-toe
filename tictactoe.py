@@ -1,4 +1,4 @@
-
+# current state of the game
 cells = input('Enter cells: ')
 print('---------')
 print('| ' + cells[0] + ' ' + cells[1] + ' ' + cells[2] + ' |')
@@ -6,11 +6,11 @@ print('| ' + cells[3] + ' ' + cells[4] + ' ' + cells[5] + ' |')
 print('| ' + cells[6] + ' ' + cells[7] + ' ' + cells[8] + ' |')
 print('---------')
 
-
 x_win = None
 o_win = None
 num_of_x = cells.count('X')
 num_of_o = cells.count('O')
+not_finished = False
 
 if cells[0] == cells[1] == cells[2] == 'X' \
         or cells[3] == cells[4] == cells[5] == 'X' \
@@ -34,13 +34,16 @@ if cells[0] == cells[1] == cells[2] == 'O' \
 
 if x_win is True and o_win is True:
     print('Impossible')
+
 if x_win is None and o_win is None:
     if num_of_o - num_of_x > 1 or num_of_x - num_of_o > 1:
         print('Impossible')
+
 if x_win is None and o_win is None:
     if '_' in cells:
         if num_of_o - num_of_x <= 1 and num_of_x - num_of_o <= 1:
             print('Game not finished')
+            not_finished = True
     else:
         print('Draw')
 
