@@ -1,4 +1,3 @@
-# write your code here
 
 cells = input('Enter cells: ')
 print('---------')
