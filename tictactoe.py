@@ -1,5 +1,4 @@
-
-
+# current state of the game
 cells = input('Enter cells: ')
 print('---------')
 print('| ' + cells[0] + ' ' + cells[1] + ' ' + cells[2] + ' |')
@@ -7,11 +6,11 @@ print('| ' + cells[3] + ' ' + cells[4] + ' ' + cells[5] + ' |')
 print('| ' + cells[6] + ' ' + cells[7] + ' ' + cells[8] + ' |')
 print('---------')
 
-not_finished = False
 x_win = None
 o_win = None
 num_of_x = cells.count('X')
 num_of_o = cells.count('O')
+not_finished = False
 
 if cells[0] == cells[1] == cells[2] == 'X' \
         or cells[3] == cells[4] == cells[5] == 'X' \
@@ -35,9 +34,11 @@ if cells[0] == cells[1] == cells[2] == 'O' \
 
 if x_win is True and o_win is True:
     print('Impossible')
+
 if x_win is None and o_win is None:
     if num_of_o - num_of_x > 1 or num_of_x - num_of_o > 1:
         print('Impossible')
+
 if x_win is None and o_win is None:
     if '_' in cells:
         if num_of_o - num_of_x <= 1 and num_of_x - num_of_o <= 1:
@@ -52,14 +53,17 @@ if x_win is True and o_win is None:
 if o_win is True and x_win is None:
     print('O wins')
 
+
 # turn to insert
-space = ['11', '12', '13', '21', '22', '23', '31', '32', '33']
-i_chosen_cell = 0
+
 
 if not_finished:
+    space = ['11', '12', '13', '21', '22', '23', '31', '32', '33']
+    i_chosen_cell = 0
     print('Enter the coordinates: ')
-    x = int(input('x = '))
-    y = int(input('y = '))
+    x, y = input().split()
+    x = int(x)
+    y = int(y)
     coord = str(x) + str(y)
     if coord in space:
         if x == 1:
@@ -83,16 +87,15 @@ if not_finished:
                 i_chosen_cell = 7
             elif y == 3:
                 i_chosen_cell = 8
-        elif 0 < x < 4 or 0 < y < 4:
-            print(x, y, 'Coordinates should be from 1 to 3!')
+        cells = list(cells)
+        cells.pop(i_chosen_cell)
+        cells.insert(i_chosen_cell, 'X')
+        print('---------')
+        print('| ' + cells[0] + ' ' + cells[1] + ' ' + cells[2] + ' |')
+        print('| ' + cells[3] + ' ' + cells[4] + ' ' + cells[5] + ' |')
+        print('| ' + cells[6] + ' ' + cells[7] + ' ' + cells[8] + ' |')
+        print('---------')
+    elif x < 1 or x > 3 or y < 1 or y > 3:
+        print('Coordinates should be from 1 to 3!')
     else:
         print('You should enter numbers!')
-
-    cells = list(cells)
-    cells.pop(i_chosen_cell)
-    cells.insert(i_chosen_cell, 'X')
-    print('---------')
-    print('| ' + cells[0] + ' ' + cells[1] + ' ' + cells[2] + ' |')
-    print('| ' + cells[3] + ' ' + cells[4] + ' ' + cells[5] + ' |')
-    print('| ' + cells[6] + ' ' + cells[7] + ' ' + cells[8] + ' |')
-    print('---------')
