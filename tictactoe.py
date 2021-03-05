@@ -1,3 +1,12 @@
+# the beginning of the game
+cells = ['_', '_', '_', '_', '_', '_', '_', '_', '_']
+print('---------')
+print('| ' + cells[0] + ' ' + cells[1] + ' ' + cells[2] + ' |')
+print('| ' + cells[3] + ' ' + cells[4] + ' ' + cells[5] + ' |')
+print('| ' + cells[6] + ' ' + cells[7] + ' ' + cells[8] + ' |')
+print('---------')
+
+
 # current state of the game
 cells = input('Enter cells: ')
 print('---------')
